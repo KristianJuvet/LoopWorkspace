@@ -24,7 +24,7 @@ env:
 jobs:
   # Checks if Distribution certificate is present and valid, optionally nukes and
   # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true'
-  check_certs: 
+    check_certs: 
     name: Check certificates
     uses: ./.github/workflows/create_certs.yml
     secrets: inherit
