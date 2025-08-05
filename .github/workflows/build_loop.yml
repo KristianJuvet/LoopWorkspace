@@ -21,40 +21,13 @@ env:
   ALIVE_BRANCH_MAIN: alive-main
   ALIVE_BRANCH_DEV: alive-dev
 
-
-
-
-
-
-
-
-
-  # The lines below add the customizations listed using the CustomizationSelect script
-          # The "\" is a continuation character 
-          #   the line following a "\" should not be blank
-          /bin/bash -c "$(curl -fsSL \
-          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
-          dexcom_upload_readings \
-          low_carb_limit \
-          now_line \
-          lnl_icon \
-          watch_title \
-          2hlollipop \
-          meal_days \
-          meal_week \
-          profiles \
-          basal_lock \
-          live_activity \
-          negative_insulin \
-          remote_window
-
-  # the final customization listed above CANNOT have a continuation character
-  # more customizations can be pasted after this line
-
-
-
-
-
+jobs: 
+  # Checks if Distribution certificate is present and valid, optionally nukes and 
+  # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true' 
+  check_certs: 
+  name: Check certificates 
+  uses: ./.github/workflows/create_certs.yml 
+  secrets: inherit
 
   # Checks if GH_PAT holds workflow permissions
   # Checks for existence of alive branch; if non-existent creates it
